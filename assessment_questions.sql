@@ -28,7 +28,7 @@ SELECT count(u.user_id) as "Number of learners using the mobile app" from users 
 -- 5. Query for the sign up counts for each hour.
 -- Hint: https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_date-format 
 -- ****************************************************************
-SELECT COUNT(HOUR(u.sign_up_at)) as "Number of Sign Ups", HOUR(u.sign_up_at) as "Hour" from users u GROUP BY HOUR(u.sign_up_at) ORDER BY COUNT(u.sign_up_at) DESC;
+SELECT HOUR(u.sign_up_at) as "Hour", COUNT(HOUR(u.sign_up_at)) as "Number of Sign Ups" from users u GROUP BY HOUR(u.sign_up_at) ORDER BY HOUR(u.sign_up_at);
 
 -- 6. What courses are the New Yorker Students taking?
 -- Hint: SUM(CASE WHEN learn_cpp NOT IN('') THEN 1 ELSE 0 END) AS "New Yorker learners taking C++"
